@@ -6,6 +6,7 @@ namespace TestPyramidExample
         private ILogger _logger;
         private IKeyReader _keyReader;
         private IUdpSocket _udpSocket;
+        private IEnvironmentProvider _environmentProvider;
         private TimestampProvider _timestampProvider;
         private int _packetCounter;
         public TestPyramidExampleApp(ITestPyramidExampleAppDependencies dependencies)
@@ -15,14 +16,14 @@ namespace TestPyramidExample
             _keyReader = dependencies.KeyReader;
             _keyReader.KeyPressed += (sender, keyPressed) => HandleKeyPress(keyPressed);
             _udpSocket = dependencies.UdpSocket;
+            _environmentProvider = dependencies.EnvironmentProvider;
             _timestampProvider = dependencies.TimestampProvider;
         }
         private void HandleKeyPress(ConsoleKey keyPressed)
         {
             if (keyPressed == ConsoleKey.Enter)
             {
-                // TODO Wrap this in a test
-                Environment.Exit(0);
+                _environmentProvider.Exit(0);
             }
             else
             {

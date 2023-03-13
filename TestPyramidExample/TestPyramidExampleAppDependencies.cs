@@ -12,6 +12,7 @@ namespace TestPyramidExample
         public ILogger Logger { get; } = new ConsoleLogger();
         public IKeyReader KeyReader { get; } = new ConsoleKeyReader();
         public IUdpSocket UdpSocket { get; }
+        public IEnvironmentProvider EnvironmentProvider { get; } = new EnvironmentProvider();
         public TimestampProvider TimestampProvider { get; }
         public TestPyramidExampleAppDependencies()
         {
