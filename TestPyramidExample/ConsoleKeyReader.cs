@@ -8,9 +8,16 @@ namespace TestPyramidExample
 {
     public class ConsoleKeyReader : IKeyReader
     {
-        public ConsoleKey ReadKey()
+        public event EventHandler<ConsoleKey>? KeyPressed;
+        public ConsoleKeyReader() 
         {
-            return Console.ReadKey().Key;
+            Task.Run(() => 
+            {
+                while (true)
+                {
+                    KeyPressed?.Invoke(this, Console.ReadKey().Key);
+                }
+            });
         }
     }
 }

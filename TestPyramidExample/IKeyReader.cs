@@ -8,6 +8,6 @@ namespace TestPyramidExample
 {
     public interface IKeyReader
     {
-        ConsoleKey ReadKey();
+        event EventHandler<ConsoleKey> KeyPressed;
     }
 }
