@@ -1,10 +1,11 @@
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-namespace example
+namespace TestPyramidExample
 {
-    public class UdpSocket
+    public class UdpSocket : IUdpSocket
     {
+        private UdpClient client;
         public UdpSocket(IPAddress localIp, IPAddress destinationIp, int destinationPort)
         {
             var localEndpoint = new IPEndPoint(localIp, 0);
@@ -15,6 +16,5 @@ namespace example
         {
             client.Send(Encoding.ASCII.GetBytes(message));
         }
-        private UdpClient client;
     }
 }

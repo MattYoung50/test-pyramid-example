@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information'
-using example;
-var testPyramidExample = new TestPyramidExample();
+﻿using TestPyramidExample;
+
+var dependencies = new TestPyramidExampleAppDependencies();
+var testPyramidExample = new TestPyramidExampleApp(dependencies);
 testPyramidExample.Run();
