@@ -1,30 +1,22 @@
-# Dependencies
-The [.NET SDK 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+# Description
+You can run this application just from the console given you've downloaded the [.NET SDK 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) following the usage section of this README or you can run it with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) which will download the SDK for you.
 
 # Contents
-1. `webui` - contains the web page and web server scripts
-2. `whitespace-removal-service` - responsible for receiving strings with whitespace and returning a response with whitespace removed
-3. `whitespace-counter-service` - responsible for receiving strings with whitespace and returning a response with the number of whitespace characters in the string 
+1. `TestPyramidExample` - an application we'd like to test that sends a UDP packet whenever a console button is input, exits if Enter pressed
+2. `UnitTests` - An Unit Test project to test individual classes in TestPyramidExample
+3. `IntegrationTests` - An Integration Test project to test different features/behaviors of TestPyramidExample
+4. `E2ETests` - An end-to-end test project to test critical paths/features of TestPyramidExample
 
 # Usage 
-### Running webui (Hosts web page and opens in browser)
+### Running TestPyramidExample
 ```console
-    $ cd webui
-    $ python server.py
-```
-### Running WhitespaceRemovalService
-```console
-    $ cd WhitespaceApplication/WhitespaceRemovalService
+    $ cd TestPyramidExample
     $ dotnet run
 ```
-### Running WhitespaceCounterService
+### Running all tests
 ```console
-    $ cd WhitespaceApplication/WhitespaceCounterService
-    $ dotnet run
+    $ dotnet test
 ```
-# Some Example API Calls
-- `httprepl http://localhost:5000`
-- `curl http://localhost:5000/WhitespaceRemovalService/{some%20String} -v`
 
 # References
-- [Microsoft ASP.Net Web API Getting Started Guide](https://docs.microsoft.com/en-us/learn/modules/build-web-api-aspnet-core/3-exercise-create-web-api)
+- [The Test Pyramid](https://medium.com/creditas-tech/the-test-pyramid-ac7bf8bb418e)
