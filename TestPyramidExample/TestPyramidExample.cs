@@ -1,3 +1,4 @@
+using System.Net;
 namespace example
 {
     public class TestPyramidExample
@@ -7,9 +8,14 @@ namespace example
             Console.WriteLine("Press any key to send a packet. Press Enter to exit.");
             int packetCounter = 0;
             var key = Console.ReadKey();
+            var localIp = IPAddress.Parse("127.0.0.1");
+            var destinationIp = IPAddress.Parse("127.0.0.1");
+            var destinationPort = 12345;
+            var udpSocket = new UdpSocket(localIp, destinationIp, destinationPort);
             while(key.Key != ConsoleKey.Enter)
             {
-                Console.WriteLine($"\nSent packet {packetCounter++}");
+                udpSocket.Send($"Hello! This is packet number {packetCounter}");
+                Console.WriteLine($"\nSent packet number {packetCounter++}");
                 key = Console.ReadKey();
             }
         }
