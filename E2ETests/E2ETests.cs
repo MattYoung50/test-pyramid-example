@@ -19,8 +19,8 @@ namespace E2ETests
         {
             var receivedMessages = new List<string>();
             ListenForPackets(receivedMessages);
-            var inputs = new List<string>() { "abcd" };
-            StartTestPyramidExample(inputs);
+            var keyboardInputsForApp = new List<string>() { "abcd" };
+            StartTestPyramidExample(keyboardInputsForApp);
 
             WaitForPacketsToArrive();
             
@@ -48,9 +48,14 @@ namespace E2ETests
         {
             using (var process = new Process())
             {
+                string workingDirectory = Environment.CurrentDirectory;
+                string e2eTestsDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+                string testPyramidExampleProjectDirectory = Path.Combine(e2eTestsDirectory, "..\\TestPyramidExample");
                 var startInfo = new ProcessStartInfo()
                 {
-                    FileName = "C:\\Users\\Matt\\Documents\\Build\\test-pyramid-example\\TestPyramidExample\\bin\\Debug\\net7.0\\TestPyramidExample.exe",
+                    FileName = "dotnet",
+                    Arguments = "run",
+                    WorkingDirectory = testPyramidExampleProjectDirectory,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardInput = true,
