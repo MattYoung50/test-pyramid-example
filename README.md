@@ -1,11 +1,13 @@
 # Description
+This application sends a UDP packet whenever a string is input and exits if Enter pressed without a string. The project has 3 test projects: Unit/Integration/E2E to demonstrate the layers of the test pyramid on it.
+
 You can run this application just from the console given you've downloaded the [.NET SDK 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) following the usage section of this README or you can run it with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) which will download the SDK for you.
 
 # Contents
-1. `TestPyramidExample` - an application we'd like to test that sends a UDP packet whenever a console button is input, exits if Enter pressed
-2. `UnitTests` - An Unit Test project to test individual classes in TestPyramidExample
-3. `IntegrationTests` - An Integration Test project to test different features/behaviors of TestPyramidExample
-4. `E2ETests` - An end-to-end test project to test critical paths/features of TestPyramidExample
+1. `TestPyramidExample` - an application that sends a UDP packet whenever a string is input, exits if Enter pressed without a string
+2. `UnitTests` - An Unit Test project to test individual classes in TestPyramidExample such as TimestampProvider which is responsible for getting a timestamp in a certain format
+3. `IntegrationTests` - An Integration Test project that uses Fake implementations of TestPyramidExample's dependencies to test 3 console inputs sending 3 udp packets and to test an empty string causing the app to shutdown
+4. `E2ETests` - An end-to-end test that runs the TestPyramidExample application in a subprocess, feeds it inputs from standardinput, and receives packets from TestPyramidExample to assert they were received after a certain amount of time
 
 # Usage 
 ### Running TestPyramidExample
