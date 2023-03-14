@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestPyramidExample
 {
-    public interface IKeyReader
+    public interface IConsoleReader
     {
-        event EventHandler<ConsoleKey> KeyPressed;
+        event EventHandler<string?> ConsoleInputReceived;
     }
 }

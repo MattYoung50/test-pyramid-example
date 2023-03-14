@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace TestPyramidExample
 {
-    public class ConsoleKeyReader : IKeyReader
+    public class ConsoleReader : IConsoleReader
     {
-        public event EventHandler<ConsoleKey>? KeyPressed;
-        public ConsoleKeyReader() 
+        public event EventHandler<string?>? ConsoleInputReceived;
+        public ConsoleReader() 
         {
             Task.Run(() => 
             {
                 while (true)
                 {
-                    KeyPressed?.Invoke(this, Console.ReadKey().Key);
+                    var line = Console.ReadLine();
+                    ConsoleInputReceived?.Invoke(this, line);
                 }
             });
         }

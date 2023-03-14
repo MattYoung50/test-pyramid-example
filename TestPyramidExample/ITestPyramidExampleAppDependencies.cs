@@ -3,7 +3,7 @@
     public interface ITestPyramidExampleAppDependencies
     {
         ILogger Logger { get; }
-        IKeyReader KeyReader { get; }
+        IConsoleReader ConsoleReader { get; }
         IUdpSocket UdpSocket { get; }
         IEnvironmentProvider EnvironmentProvider { get; }
         TimestampProvider TimestampProvider { get; }

@@ -11,8 +11,8 @@ namespace IntegrationTests
     {
         public ILogger Logger => FakeLogger;
         public FakeLogger FakeLogger { get; } = new FakeLogger();
-        public IKeyReader KeyReader => FakeKeyReader;
-        public FakeKeyReader FakeKeyReader { get; } = new FakeKeyReader();  
+        public IConsoleReader ConsoleReader => FakeConsoleReader;
+        public FakeConsoleReader FakeConsoleReader { get; } = new FakeConsoleReader();  
         public IUdpSocket UdpSocket => FakeUdpSocket;
         public FakeUdpSocket FakeUdpSocket { get; } = new FakeUdpSocket();
         public IEnvironmentProvider EnvironmentProvider => FakeEnvironmentProvider;

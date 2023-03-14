@@ -4,7 +4,7 @@ namespace TestPyramidExample
     public class TestPyramidExampleApp
     {
         private ILogger _logger;
-        private IKeyReader _keyReader;
+        private IConsoleReader _consoleReader;
         private IUdpSocket _udpSocket;
         private IEnvironmentProvider _environmentProvider;
         private TimestampProvider _timestampProvider;
@@ -12,17 +12,18 @@ namespace TestPyramidExample
         public TestPyramidExampleApp(ITestPyramidExampleAppDependencies dependencies)
         {
             _logger = dependencies.Logger;
-            _logger.WriteLine("Press any key to send a packet. Press Enter to exit.");
-            _keyReader = dependencies.KeyReader;
-            _keyReader.KeyPressed += (sender, keyPressed) => HandleKeyPress(keyPressed);
+            _logger.WriteLine("Input any text to send a packet. Press Enter with no text to exit.");
+            _consoleReader = dependencies.ConsoleReader;
+            _consoleReader.ConsoleInputReceived += (sender, line) => HandleConsoleInputReceived(line);
             _udpSocket = dependencies.UdpSocket;
             _environmentProvider = dependencies.EnvironmentProvider;
             _timestampProvider = dependencies.TimestampProvider;
         }
-        private void HandleKeyPress(ConsoleKey keyPressed)
+        private void HandleConsoleInputReceived(string? line)
         {
-            if (keyPressed == ConsoleKey.Enter)
+            if (line == null || line.Length == 0)
             {
+                _logger.WriteLine("Exit selected. Closing application...");
                 _environmentProvider.Exit(0);
             }
             else

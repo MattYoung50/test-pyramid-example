@@ -12,10 +12,10 @@ namespace IntegrationTests
             var app = new TestPyramidExampleApp(fakeDependencies);
 
             // When
-            var keyReader = (FakeKeyReader)fakeDependencies.KeyReader;
-            keyReader.InjectKeyPress(ConsoleKey.Home);
-            keyReader.InjectKeyPress(ConsoleKey.Z);
-            keyReader.InjectKeyPress(ConsoleKey.F10);
+            var consoleReader = fakeDependencies.FakeConsoleReader;
+            consoleReader.InjectLine("Hello");
+            consoleReader.InjectLine("World");
+            consoleReader.InjectLine("!");
 
             // Then
             var udpSocket = fakeDependencies.FakeUdpSocket;
@@ -33,8 +33,8 @@ namespace IntegrationTests
             var app = new TestPyramidExampleApp(fakeDependencies);
 
             // When
-            var keyReader = (FakeKeyReader)fakeDependencies.KeyReader;
-            keyReader.InjectKeyPress(ConsoleKey.Enter);
+            var keyReader = fakeDependencies.FakeConsoleReader;
+            keyReader.InjectLine(string.Empty);
 
             // Then
             var udpSocket = fakeDependencies.FakeUdpSocket;

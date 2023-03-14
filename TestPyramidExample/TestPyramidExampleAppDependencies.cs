@@ -10,7 +10,7 @@ namespace TestPyramidExample
     public class TestPyramidExampleAppDependencies : ITestPyramidExampleAppDependencies
     {
         public ILogger Logger { get; } = new ConsoleLogger();
-        public IKeyReader KeyReader { get; } = new ConsoleKeyReader();
+        public IConsoleReader ConsoleReader { get; } = new ConsoleReader();
         public IUdpSocket UdpSocket { get; }
         public IEnvironmentProvider EnvironmentProvider { get; } = new EnvironmentProvider();
         public TimestampProvider TimestampProvider { get; }
