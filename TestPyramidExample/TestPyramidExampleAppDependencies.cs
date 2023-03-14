@@ -19,7 +19,7 @@ namespace TestPyramidExample
             var localIp = IPAddress.Parse("127.0.0.1");
             var destinationIp = IPAddress.Parse("127.0.0.1");
             var destinationPort = 12345;
-            UdpSocket = new UdpSocket(localIp, destinationIp, destinationPort);
+            UdpSocket = new UdpSocket(localIp, 0, destinationIp, destinationPort);
             TimestampProvider = new TimestampProvider(new TimeProvider());
         }
     }

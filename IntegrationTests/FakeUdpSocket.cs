@@ -10,6 +10,7 @@ namespace IntegrationTests
     public class FakeUdpSocket : IUdpSocket
     {
         public List<string> PacketsSent = new List<string>();
+        public event EventHandler<string>? PacketReceived;
         public void Send(string message)
         {
             PacketsSent.Add(message);

@@ -8,6 +8,7 @@ namespace TestPyramidExample
 {
     public interface IUdpSocket
     {
+        event EventHandler<string> PacketReceived;
         void Send(string message);
     }
 }
