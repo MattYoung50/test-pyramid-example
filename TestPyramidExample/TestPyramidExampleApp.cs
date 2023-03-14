@@ -13,11 +13,11 @@ namespace TestPyramidExample
         {
             _logger = dependencies.Logger;
             _logger.WriteLine("Input any text to send a packet. Press Enter with no text to exit.");
-            _consoleReader = dependencies.ConsoleReader;
-            _consoleReader.ConsoleInputReceived += (sender, line) => HandleConsoleInputReceived(line);
             _udpSocket = dependencies.UdpSocket;
             _environmentProvider = dependencies.EnvironmentProvider;
             _timestampProvider = dependencies.TimestampProvider;
+            _consoleReader = dependencies.ConsoleReader;
+            _consoleReader.ConsoleInputReceived += (sender, line) => HandleConsoleInputReceived(line);
         }
         private void HandleConsoleInputReceived(string? line)
         {
