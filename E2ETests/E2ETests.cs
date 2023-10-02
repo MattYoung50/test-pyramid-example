@@ -29,11 +29,6 @@ namespace E2ETests
             Assert.True(receivedMessages[0].Contains(expectedInMessage));
         }
 
-        private async void WaitForPacketsToArrive()
-        {
-             await Task.Delay(50);
-        }
-
         private void ListenForPackets(List<string> receivedMessages)
         {
             var localIp = IPAddress.Parse("127.0.0.1");
@@ -78,6 +73,11 @@ namespace E2ETests
                 process.BeginOutputReadLine();
                 process.WaitForExit();
             }
+        }
+
+        private async void WaitForPacketsToArrive()
+        {
+             await Task.Delay(50);
         }
     }
 }
