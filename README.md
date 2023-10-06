@@ -3,6 +3,7 @@ This application sends a UDP packet whenever a string is input and exits if Ente
 
 You can run this application just from the console given you've downloaded the [.NET SDK 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) following the usage section of this README or you can run it with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) which will download the SDK for you.
 
+![alt text](resources/TestPyramidExample.PNG "Test Pyramid Example")
 # Contents
 1. `TestPyramidExample` - an application that sends a UDP packet whenever a string is input, exits if Enter pressed without a string
 2. `UnitTests` - An Unit Test project to test individual classes in TestPyramidExample such as TimestampProvider which is responsible for getting a timestamp in a certain format
