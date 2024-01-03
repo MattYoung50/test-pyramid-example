@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.5" />
+		<PackageReference Include="SpecFlow.NUnit" Version="3.9.8" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
+		<PackageReference Include="FluentAssertions" Version="5.10.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\IntegrationTests\IntegrationTests.csproj" />
+      <ProjectReference Include="..\TestPyramidExample\TestPyramidExample.csproj" />
+	</ItemGroup>
+
+</Project>
