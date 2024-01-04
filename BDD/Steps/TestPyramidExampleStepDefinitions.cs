@@ -27,7 +27,7 @@ namespace BDD
             consoleReader.InjectLine(key);
         }
 
-        [Then("(.*) udp packet(s) get sent out")]
+        [Then(@"(.*) udp packet\(s\) get sent out")]
         public void ThenUdpPacketsGetSentOut(int numPackets)
         {
             var udpSocket = _fakeDependencies.FakeUdpSocket;
