@@ -24,7 +24,14 @@ namespace BDD
         public void WhenTheKeyIsPressed(string key)
         {
             var consoleReader = _fakeDependencies.FakeConsoleReader;
-            consoleReader.InjectLine(key);
+            if (key == "Enter")
+            {
+                consoleReader.InjectLine(string.Empty);
+            }
+            else
+            {
+                consoleReader.InjectLine(key);          
+            }
         }
 
         [Then(@"(.*) udp packet\(s\) get sent out")]
@@ -36,7 +43,13 @@ namespace BDD
             {
                 Assert.That(udpSocket.PacketsSent[numPackets-1], Is.EqualTo($"03/13/2023 12:36:40: Hello! This is packet number {numPackets-1}"));
             }
-            
+        }
+
+        [Then(@"the program closes with exit code '(.*)'")]
+        public void ThenTheProgramClosesWithExitCode(int exitCode)
+        {
+            var environmentProvider = _fakeDependencies.FakeEnvironmentProvider;
+            Assert.That(environmentProvider.GetExitCode(), Is.EqualTo(exitCode));
         }
     }
 }
